@@ -43,7 +43,7 @@ def predict():
     fts_model = [i for i in stt_model.keys()]
     # match features
     stt = matching(fts_model, fts_input)
-    path = 'Models/rfr_model_'+str(stt)+'.pkl'
+    path = 'rfr_model_'+str(stt)+'.pkl'
     model = joblib.load(path)
         
     a = dic
