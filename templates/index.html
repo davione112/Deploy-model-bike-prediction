@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment</title>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Bike Forecasting</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="hour" placeholder="hour" min="0" max="23" />
+        <input type="number" name="month" placeholder="month" min="1" max="12"/>
+		<input type="number" name="temperature" placeholder="temperature" min="-17.8" max="39.4" step="0.00001"/>
+        <input type="number" name="humidity" placeholder="humidity" min="0" max="98" step="0.00001"/>
+        <input type="number" name="visibility" placeholder="visibility" min="27" max="2000" step="0.00001"/>
+        <input type="number" name="dew point temperature" placeholder="dew point temperature" min="-30.6" max="27" step="0.00001"/>
+        <input type="number" name="solar radiation" placeholder="solar radiation" min="0.3" max="52" step="0.00001"/>
+        <input type="number" name="functioning day" placeholder="functioning day" min="0" max="1"/>
+        <input type="number" name="Season summer" placeholder="Season summer" min="0" max="1"/>
+        <input type="number" name="Season winter" placeholder="Season winter" min="0" max="1"/>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ features }}
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
