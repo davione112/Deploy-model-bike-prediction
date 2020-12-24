@@ -20,11 +20,11 @@ with open(filename,'r') as modelist:
     
 app = Flask(__name__)
 
-
 def matching(fts_model, fts_input):
     for i in fts_model:
         if str(fts_input) == i:
             return stt_model[i]
+
 
 @app.route('/')
 def home():
@@ -43,9 +43,8 @@ def predict():
     fts_model = [i for i in stt_model.keys()]
     # match features
     stt = matching(fts_model, fts_input)
-    path = 'rfr_model_'+str(stt)+'.pkl'
+    path = 'Models/rfr_model_'+str(stt)+'.pkl'
     model = joblib.load(path)
-
         
     a = dic
     features = [i for i in dic.values()]
