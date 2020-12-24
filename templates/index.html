@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html >
 
-
 <head>
   <meta charset="UTF-8">
-  <title>Deployment</title>
-  
+<style>
+body  {
+    background-image: url({{ url_for('static', filename='home.jpg') }});
+}
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input {
+  width: 50%;
+  color: black;
+  background-color: #ccffff!important;
+  clear: left;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  align: center;
+  margin:1px auto;
+  display:block
+}
+div {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    align: center;
+    margin:1px auto;
+    display:block;
+}
+</style>
 </head>
+
 
 <body>
  <div class="login">
-	<h1>Bike Forecasting</h1>
+	<h1>Bike Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="number" name="hour" placeholder="hour" min="0" max="23" />
-        <input type="number" name="month" placeholder="month" min="1" max="12"/>
-		<input type="number" name="temperature" placeholder="temperature" min="-17.8" max="39.4" step="0.00001"/>
-        <input type="number" name="humidity" placeholder="humidity" min="0" max="98" step="0.00001"/>
-        <input type="number" name="visibility" placeholder="visibility" min="27" max="2000" step="0.00001"/>
-        <input type="number" name="dew point temperature" placeholder="dew point temperature" min="-30.6" max="27" step="0.00001"/>
-        <input type="number" name="solar radiation" placeholder="solar radiation" min="0.3" max="52" step="0.00001"/>
-        <input type="number" name="functioning day" placeholder="functioning day" min="0" max="1"/>
-        <input type="number" name="Season summer" placeholder="Season summer" min="0" max="1"/>
-        <input type="number" name="Season winter" placeholder="Season winter" min="0" max="1"/>
+    	<input type="number" name="hour" placeholder="Hour" min="0" max="23" />
+        <input type="number" name="month" placeholder="Month" min="1" max="12" />
+		<input type="number" name="temperature" placeholder="Temperature" min="-17.8" max="39.4" step="0.1" />
+        <input type="number" name="humidity" placeholder="Humidity" min="0" max="98" />
+        <input type="number" name="visibility" placeholder="Visibility" min="27" max="2000" />
+        <input type="number" name="dew point temperature" placeholder="Dew Point Temperature" min="-30.6" max="27" step="0.1" />
+        <input type="number" name="solar radiation" placeholder="Solar Radiation" min="0" max="3.52" step="0.01" />
+        <input type="number" name="functioning_day" placeholder="Functioning Day" min="0" max="1" />
+        <input type="number" name="Season_Summer" placeholder="Season Summer" min="0" max="1" />
+        <input type="number" name="Season_Winter" placeholder="Season Winter" min="0" max="1" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
    <br>
    <br>
-   {{ features }}
+   <h1>{{ features }}</h1>
    <br>
-   {{ prediction_text }}
-
+   <h1>{{ prediction_text }}</h1>
  </div>
 
 
